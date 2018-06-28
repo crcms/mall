@@ -1,0 +1,32 @@
+{
+    "name": "crcms/mall",
+    "description": "crcms mall module",
+	"keywords": ["category", "crcms","laravel","php"],
+	"homepage": "https://github.com/crcms/mall",
+    "license": "MIT",
+    "type": "crcms-module",
+    "require": {
+        "php":">=7.1"
+    },
+	"autoload": {
+        "files": [
+        ],
+        "psr-4": {
+            "CrCms\\Mall\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CrCms\\Mall\\Providers\\MallServiceProvider"
+            ],
+            "aliases": {
+            }
+        }
+    }
+}
