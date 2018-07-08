@@ -7,8 +7,10 @@ Route::prefix('api/v1')->namespace('CrCms\Mall\Http\Controllers\Api')->middlewar
 
     Route::prefix('manage')->namespace('Manage')->group(function(){
 
-        Route::resource('mall', 'MallController')->names([
+        Route::apiResource('categories','CategoryController');
+
+        /*Route::resource('mall', 'MallController')->names([
             'index' => 'mall.mall.index',
-        ])->except(['show']);
+        ])->except(['show']);*/
     });
 });

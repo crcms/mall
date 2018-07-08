@@ -7,9 +7,9 @@
  * @copyright Copyright &copy; 2018 Rights Reserved CRCMS
  */
 
-namespace CrCms\Category\Http\Controllers\Api\Manage;
+namespace CrCms\Mall\Http\Controllers\Api\Manage;
 
-use CrCms\Category\Http\Resources\AttributeResource;
+use CrCms\Mall\Http\Resources\AttributeResource;
 use CrCms\Foundation\App\Http\Controllers\Controller;
 
 /**

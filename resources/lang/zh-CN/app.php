@@ -7,4 +7,13 @@
  */
 
 return [
+    'not_found' => '资源不存在',
+
+    //attributes
+    'status' => [
+        'undefined' => '未定义',
+        'enable' => '开启',
+        'hidden' => '隐藏',
+        'disable' => '禁止',
+    ],
 ];

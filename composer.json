@@ -6,7 +6,8 @@
     "license": "MIT",
     "type": "crcms-module",
     "require": {
-        "php":">=7.1"
+        "php":">=7.2",
+        "kalnoy/nestedset": "^4.3"
     },
 	"autoload": {
         "files": [
@@ -17,7 +18,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "CrCms\\Mall\\Tests\\": "tests/"
         }
     },
     "extra": {
