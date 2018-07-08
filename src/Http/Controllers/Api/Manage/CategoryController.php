@@ -25,7 +25,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -36,7 +36,7 @@ class CategoryController extends Controller
 
     /**
      * @param StoreRequest $storeRequest
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return \Illuminate\Http\Response
      */
     public function store(StoreRequest $storeRequest)
     {
@@ -48,7 +48,7 @@ class CategoryController extends Controller
     /**
      * @param UpdateRequest $updateRequest
      * @param int $id
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return \Illuminate\Http\Response
      */
     public function update(UpdateRequest $updateRequest, int $id)
     {
@@ -59,7 +59,7 @@ class CategoryController extends Controller
 
     /**
      * @param $id
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
