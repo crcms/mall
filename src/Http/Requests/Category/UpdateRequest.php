@@ -2,6 +2,7 @@
 
 namespace CrCms\Mall\Http\Requests\Category;
 
+use CrCms\Mall\Models\CategoryModel;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -14,7 +15,7 @@ class UpdateRequest extends FormRequest
     public function rules() : array
     {
         $rules = $this->_rules();
-        $rules['sign'] = ['required', 'max:50', Rule::unique('categories')->ignore($this->route()->parameter('category'))];
+        $rules['sign'] = [ 'max:50', Rule::unique((new CategoryModel())->getTable())->ignore($this->route()->parameter('category'))];
         return $rules;
     }
 

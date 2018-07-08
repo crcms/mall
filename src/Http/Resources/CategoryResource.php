@@ -3,12 +3,13 @@
 namespace CrCms\Mall\Http\Resources;
 
 use CrCms\Mall\Attributes\CategoryAttribute;
-use CrCms\Mall\Models\CategoryModel;
 use CrCms\Foundation\App\Http\Resources\Resource;
-use CrCms\Module\Http\Resources\ModuleResource;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\ResourceCollection;
 
+/**
+ * Class CategoryResource
+ * @package CrCms\Mall\Http\Resources
+ */
 class CategoryResource extends Resource
 {
     /**
@@ -28,18 +29,16 @@ class CategoryResource extends Resource
             'sign' => $this->sign,
             'status' => $this->status,
             'status_convert' => CategoryAttribute::getStaticTransform(CategoryAttribute::KEY_STATUS . '.' . strval($this->status)),
+            'sort' => $this->sort,
             'created_at' => $this->created_at->toDateTimeString(),
             'updated_at' => $this->updated_at->toDateTimeString(),
-            'children' => empty($this->children) ? [] : self::collection($this->children),
-        ];
-    }
+            $this->mergeWhen($request->route()->getName() === 'mall.manage.categories.index', function () {
+                return ['children' => $this->children->isEmpty() ? null : self::collection($this->children)];
+            }),
 
-    /**
-     * @param CategoryModel $categoryModel
-     * @return ResourceCollection
-     */
-    protected function includeModule(CategoryModel $categoryModel): ResourceCollection
-    {
-        return ModuleResource::collection($categoryModel->morphToManyModule()->get());
+            $this->mergeWhen($request->route()->getName() !== 'mall.manage.categories.index', function () {
+                return ['parent' => empty($this->parent) ? null : new self($this->parent),];
+            }),
+        ];
     }
 }

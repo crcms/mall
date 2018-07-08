@@ -1,19 +1,16 @@
 <?php
 
-namespace CrCms\Category\Http\Controllers\Api\Manage;
+namespace CrCms\Mall\Http\Controllers\Api\Manage;
 
-use CrCms\Category\Http\Requests\Category\StoreRequest;
-use CrCms\Category\Http\Requests\Category\UpdateRequest;
-use CrCms\Category\Http\Resources\CategoryResource;
-use CrCms\Category\Repositories\CategoryRepository;
-use CrCms\Category\Repositories\Contracts\CategoryRepositoryContract;
+use CrCms\Mall\Http\Requests\Category\StoreRequest;
+use CrCms\Mall\Http\Requests\Category\UpdateRequest;
+use CrCms\Mall\Http\Resources\CategoryResource;
+use CrCms\Mall\Repositories\CategoryRepository;
 use CrCms\Foundation\App\Http\Controllers\Controller;
-use CrCms\Module\Models\ModuleModel;
-use CrCms\Module\Repositories\ModuleRepository;
 
 /**
  * Class CategoryController
- * @package CrCms\Category\Http\Controllers\Api\Manage
+ * @package CrCms\Mall\Http\Controllers\Api\Manage
  */
 class CategoryController extends Controller
 {
@@ -21,7 +18,7 @@ class CategoryController extends Controller
      * CategoryController constructor.
      * @param CategoryRepository $categoryRepository
      */
-    public function __construct(CategoryRepositoryContract $categoryRepository)
+    public function __construct(CategoryRepository $categoryRepository)
     {
         parent::__construct();
         $this->repository = $categoryRepository;
@@ -33,6 +30,7 @@ class CategoryController extends Controller
     public function index()
     {
         $models = $this->repository->tree();
+
         return $this->response->collection($models, CategoryResource::class);
     }
 
@@ -43,8 +41,6 @@ class CategoryController extends Controller
     public function store(StoreRequest $storeRequest)
     {
         $model = $this->repository->create($storeRequest->all());
-//
-//        $this->repository->relationModule($model, $storeRequest->input('modules'));
 
         return $this->response->resource($model, CategoryResource::class, ['children']);
     }
@@ -57,8 +53,6 @@ class CategoryController extends Controller
     public function update(UpdateRequest $updateRequest, int $id)
     {
         $model = $this->repository->update($updateRequest->all(), $id);
-//
-//        $this->repository->relationModule($model, $updateRequest->input('modules'));
 
         return $this->response->resource($model, CategoryResource::class, ['children']);
     }
@@ -69,7 +63,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $rows = $this->repository->delete($id);
+        $rows = $this->repository->deleteSelfAndDescendants($id);
 
         return $this->response->noContent();
     }

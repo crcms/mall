@@ -2,6 +2,7 @@
 
 namespace CrCms\Mall\Http\Requests\Category;
 
+use CrCms\Mall\Models\CategoryModel;
 use Illuminate\Validation\Rule;
 
 trait RequestTrait
@@ -22,11 +23,10 @@ trait RequestTrait
         return [
             'parent_id' => ['required', 'integer'],
             'name' => ['required', 'max:50'],
-            'sign' => ['required', 'max:50', Rule::unique('categories')],
+            'sign' => ['max:50', Rule::unique((new CategoryModel())->getTable())],
             'sort' => ['required', 'integer'],
             'status' => ['required', 'integer'],
             'icon' => ['max:255'],
-            'modules' => ['required', 'array', Rule::exists('modules', 'id')]
         ];
     }
 
@@ -36,13 +36,12 @@ trait RequestTrait
     public function attributes(): array
     {
         return [
-            'parent_id' => trans('category::lang.category.parent_id'),
-            'name' => trans('category::lang.category.name'),
-            'sign' => trans('category::lang.category.sign'),
-            'sort' => trans('category::lang.category.sort'),
-            'status' => trans('category::lang.category.status'),
-            'icon' => trans('category::lang.category.icon'),
-            'modules' => trans('category::lang.category.modules'),
+            'parent_id' => trans('mall::lang.category.parent_id'),
+            'name' => trans('mall::lang.category.name'),
+            'sign' => trans('mall::lang.category.sign'),
+            'sort' => trans('mall::lang.category.sort'),
+            'status' => trans('mall::lang.category.status'),
+            'icon' => trans('mall::lang.category.icon'),
         ];
     }
 }

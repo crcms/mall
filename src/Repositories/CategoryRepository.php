@@ -1,12 +1,11 @@
 <?php
 
-namespace CrCms\Mall\Repositories\Local;
+namespace CrCms\Mall\Repositories;
 
 use CrCms\Mall\Attributes\CategoryAttribute;
 use CrCms\Mall\Models\CategoryModel;
 use CrCms\Foundation\App\Repositories\AbstractRepository;
 use Illuminate\Support\Collection;
-use UnexpectedValueException;
 
 class CategoryRepository extends AbstractRepository
 {
@@ -40,72 +39,15 @@ class CategoryRepository extends AbstractRepository
     }
 
     /**
-     * @param int|string $id
-     * @return bool|int
+     * @param array|string|array $id
+     * @return int
      */
-    public function delete($id)
+    public function deleteSelfAndDescendants($id)
     {
-        $id = (array)$id;
-
-        $this->setOriginal($id);
-
-        $this->setData($id);
-
-        if ($this->fireEvent('deleting', $id) === false) return false;
-
-        $models = collect($this->getData())->map(function ($id) {
+        $models = collect((array)$id)->map(function ($id) {
             return $this->getModel()->newScopedQuery()->descendantsAndSelf($id);
         })->flatten(1)->unique('id');
 
-        $count = $models->count();
-
-        if ($count <= 0) {
-            throw new UnexpectedValueException('Data deletion failed, Keys is:' . implode(',', $this->data));
-        }
-
-        $models->map->delete();
-
-        $this->fireEvent('deleted', $models);
-
-        return $count;
+        return $this->delete($models->map->id->toArray());
     }
-
-    /**
-     * @param CategoryModel $categoryModel
-     * @param array $moduleIds
-     * @return array
-     */
-    public function relationModule(CategoryModel $categoryModel, array $moduleIds): array
-    {
-        return $categoryModel->morphToManyModule()->sync($moduleIds);
-    }
-
-    /**
-     * @param CategoryModel $categoryModel
-     * @return int
-     */
-    public function removeRelationModule(CategoryModel $categoryModel): int
-    {
-        return $categoryModel->morphToManyModule()->detach();
-    }
-
-    /**
-     * @param int $id
-     * @return int
-     */
-//    public function relateDelete(int $id): int
-//    {
-//        $model = $this->byIntId($id);
-//
-//        $row = $this->delete($model->id);
-//
-//        $children = $this->where('parent_id', $model->id)->get();
-//        if (!$children->isEmpty()) {
-//            $children->each(function (CategoryModel $categoryModel) {
-//                $this->relateDelete($categoryModel->id);
-//            });
-//        }
-//
-//        return $row;
-//    }
 }
