@@ -13,11 +13,6 @@ class CategoryModel extends Model
     /**
      * @var string
      */
-    protected $dateFormat = 'U';
-
-    /**
-     * @var string
-     */
     protected $table = 'mall_product_categories';
 
     /**
