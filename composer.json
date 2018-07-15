@@ -10,6 +10,10 @@
         "kalnoy/nestedset": "^4.3"
     },
 	"autoload": {
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ],
         "files": [
         ],
         "psr-4": {
