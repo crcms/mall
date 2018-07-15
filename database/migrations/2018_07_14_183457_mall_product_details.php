@@ -18,7 +18,7 @@ class MallProductDetails extends Migration
 
             $table->string('characteristic')->nullable()->comment('特点');
             $table->text('detail')->nullable()->comment('详情');
-            $table->json('attributes')->nullable()->comment('属性');
+            $table->json('attributes')->nullable()->comment('属性，二级JSON');
 
             $table->primary('id');
         });
