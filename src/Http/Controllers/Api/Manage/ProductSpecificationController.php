@@ -13,21 +13,20 @@ use CrCms\Foundation\App\Http\Controllers\Controller;
 use CrCms\Mall\Actions\Specification\StoreAction;
 use CrCms\Mall\Actions\Specification\UpdateAction;
 use CrCms\Mall\Http\Requests\Specification\QueryRequest;
-use CrCms\Mall\Http\Requests\Specification\UpdateRequest;
-use CrCms\Mall\Repositories\SpecificationRepository;
-use CrCms\Mall\Http\Resources\SpecificationResource;
+use CrCms\Mall\Repositories\ProductSpecificationRepository;
+use CrCms\Mall\Http\Resources\ProductSpecificationResource;
 
 /**
- * Class SpecificationController
+ * Class ProductSpecificationController
  * @package CrCms\Mall\Http\Controllers\Api\Manage
  */
-class SpecificationController extends Controller
+class ProductSpecificationController extends Controller
 {
     /**
-     * SpecificationController constructor.
-     * @param SpecificationRepository $repository
+     * ProductSpecificationController constructor.
+     * @param ProductSpecificationRepository $repository
      */
-    public function __construct(SpecificationRepository $repository)
+    public function __construct(ProductSpecificationRepository $repository)
     {
         $this->repository = $repository;
     }
@@ -39,14 +38,14 @@ class SpecificationController extends Controller
 
     public function store(StoreAction $action)
     {
-        return $this->response->resource($action->handle(), SpecificationResource::class);
+        return $this->response->resource($action->handle(), ProductSpecificationResource::class);
     }
 
     public function update(int $id, UpdateAction $action)
     {
         $model = $action->handle(['id' => $id]);
 
-        return $this->response->resource($model, SpecificationResource::class);
+        return $this->response->resource($model, ProductSpecificationResource::class);
     }
 
     public function destroy()

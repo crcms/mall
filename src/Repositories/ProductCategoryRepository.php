@@ -3,11 +3,11 @@
 namespace CrCms\Mall\Repositories;
 
 use CrCms\Mall\Attributes\CategoryAttribute;
-use CrCms\Mall\Models\CategoryModel;
+use CrCms\Mall\Models\ProductCategoryModel;
 use CrCms\Foundation\App\Repositories\AbstractRepository;
 use Illuminate\Support\Collection;
 
-class CategoryRepository extends AbstractRepository
+class ProductCategoryRepository extends AbstractRepository
 {
     /**
      * @var array
@@ -15,11 +15,11 @@ class CategoryRepository extends AbstractRepository
     protected $guard = ['id', 'name', 'sign', 'sort', 'icon', 'status', 'parent_id'];
 
     /**
-     * @return CategoryModel
+     * @return ProductCategoryModel
      */
-    public function newModel(): CategoryModel
+    public function newModel(): ProductCategoryModel
     {
-        return app(CategoryModel::class);
+        return app(ProductCategoryModel::class);
     }
 
     /**

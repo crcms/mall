@@ -14,10 +14,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class SpecificationModel
+ * Class ProductSpecificationModel
  * @package CrCms\Mall\Models
  */
-class SpecificationModel extends Model
+class ProductSpecificationModel extends Model
 {
     use SoftDeletes;
 
@@ -38,6 +38,6 @@ class SpecificationModel extends Model
      */
     public function belongsToCategory(): BelongsTo
     {
-        return $this->belongsTo(CategoryModel::class);
+        return $this->belongsTo(ProductCategoryModel::class);
     }
 }

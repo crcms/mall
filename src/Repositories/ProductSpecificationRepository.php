@@ -16,7 +16,7 @@ use CrCms\Repository\AbstractRepository;
  * Class SpecificationRepository
  * @package CrCms\Mall\Repositories
  */
-class SpecificationRepository extends AbstractRepository
+class ProductSpecificationRepository extends AbstractRepository
 {
     /**
      * @var array

@@ -6,7 +6,7 @@ use CrCms\Foundation\App\Models\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Kalnoy\Nestedset\NodeTrait;
 
-class CategoryModel extends Model
+class ProductCategoryModel extends Model
 {
     use SoftDeletes, NodeTrait;
 

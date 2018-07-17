@@ -24,8 +24,6 @@ class MallProductStocks extends Migration
             $table->unsignedInteger('stock')->default(0)->comment('库存');
             $table->unsignedInteger('stock_alarm')->default(0)->comment('库存预警');
             $table->string('image', 150)->nullable()->comment('图片地址');
-
-
             $table->unsignedBigInteger('created_at')->default(0)->comment('创建时间');
             $table->unsignedBigInteger('updated_at')->default(0)->comment('修改时间');
             $table->unsignedBigInteger('deleted_at')->nullable()->comment('删除时间');

@@ -7,14 +7,14 @@ Route::prefix('api/v1/mall')->namespace('CrCms\Mall\Http\Controllers\Api')->midd
 
     Route::prefix('manage')->namespace('Manage')->group(function () {
 
-        Route::apiResource('categories', 'CategoryController')->except('show')->names([
+        Route::apiResource('categories', 'ProductCategoryController')->except('show')->names([
             'index' => 'mall.manage.categories.index',
             'store' => 'mall.manage.categories.store',
             'update' => 'mall.manage.categories.update',
             'destroy' => 'mall.manage.categories.destroy',
         ]);
 
-        Route::apiResource('specifications', 'SpecificationController')->except('show')->names([
+        Route::apiResource('specifications', 'ProductSpecificationController')->except('show')->names([
             'index' => 'mall.manage.specifications.index',
             'store' => 'mall.manage.specifications.store',
             'update' => 'mall.manage.specifications.update',

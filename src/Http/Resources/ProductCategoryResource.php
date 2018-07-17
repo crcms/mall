@@ -7,10 +7,10 @@ use CrCms\Foundation\App\Http\Resources\Resource;
 use Illuminate\Http\Request;
 
 /**
- * Class CategoryResource
+ * Class ProductCategoryResource
  * @package CrCms\Mall\Http\Resources
  */
-class CategoryResource extends Resource
+class ProductCategoryResource extends Resource
 {
     /**
      * @var array

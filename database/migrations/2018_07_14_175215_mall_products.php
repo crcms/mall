@@ -13,7 +13,7 @@ class MallProducts extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('mall_products', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true);
             $table->unsignedBigInteger('category_id')->default(0)->comment('分类id');
 
@@ -40,7 +40,8 @@ class MallProducts extends Migration
             $table->unsignedTinyInteger('review_status')->default(0)->commet('审核状态，1通过，2不通过，3未审核');
             $table->unsignedBigInteger('sort')->default(0)->comment('排序值');
 
-            $table->unsignedBigInteger('published_at')->default(0)->comment('发布时间');
+            $table->unsignedBigInteger('added_at')->default(0)->comment('上架时间');
+            $table->unsignedBigInteger('dismounted_at')->default(0)->comment('下架时间');
             $table->unsignedBigInteger('created_at')->default(0)->comment('创建时间');
             $table->unsignedBigInteger('updated_at')->default(0)->comment('修改时间');
             $table->unsignedBigInteger('deleted_at')->nullable()->comment('删除时间');
@@ -54,6 +55,6 @@ class MallProducts extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('mall_products');
     }
 }

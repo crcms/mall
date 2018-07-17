@@ -4,21 +4,21 @@ namespace CrCms\Mall\Http\Controllers\Api\Manage;
 
 use CrCms\Mall\Http\Requests\Category\StoreRequest;
 use CrCms\Mall\Http\Requests\Category\UpdateRequest;
-use CrCms\Mall\Http\Resources\CategoryResource;
-use CrCms\Mall\Repositories\CategoryRepository;
+use CrCms\Mall\Http\Resources\ProductCategoryResource;
+use CrCms\Mall\Repositories\ProductCategoryRepository;
 use CrCms\Foundation\App\Http\Controllers\Controller;
 
 /**
- * Class CategoryController
+ * Class ProductCategoryController
  * @package CrCms\Mall\Http\Controllers\Api\Manage
  */
-class CategoryController extends Controller
+class ProductCategoryController extends Controller
 {
     /**
-     * CategoryController constructor.
-     * @param CategoryRepository $categoryRepository
+     * ProductCategoryController constructor.
+     * @param ProductCategoryRepository $categoryRepository
      */
-    public function __construct(CategoryRepository $categoryRepository)
+    public function __construct(ProductCategoryRepository $categoryRepository)
     {
         parent::__construct();
         $this->repository = $categoryRepository;
@@ -31,7 +31,7 @@ class CategoryController extends Controller
     {
         $models = $this->repository->tree();
 
-        return $this->response->collection($models, CategoryResource::class);
+        return $this->response->collection($models, ProductCategoryResource::class);
     }
 
     /**
@@ -42,7 +42,7 @@ class CategoryController extends Controller
     {
         $model = $this->repository->create($storeRequest->all());
 
-        return $this->response->resource($model, CategoryResource::class, ['children']);
+        return $this->response->resource($model, ProductCategoryResource::class, ['children']);
     }
 
     /**
@@ -54,7 +54,7 @@ class CategoryController extends Controller
     {
         $model = $this->repository->update($updateRequest->all(), $id);
 
-        return $this->response->resource($model, CategoryResource::class, ['children']);
+        return $this->response->resource($model, ProductCategoryResource::class, ['children']);
     }
 
     /**

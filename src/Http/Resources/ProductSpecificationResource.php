@@ -11,19 +11,14 @@ namespace CrCms\Mall\Http\Resources;
 
 use CrCms\Foundation\App\Http\Resources\Resource;
 use CrCms\Mall\Attributes\MallAttribute;
-use CrCms\Mall\Models\SpecificationModel;
+use CrCms\Mall\Models\ProductSpecificationModel;
 
 /**
- * Class SpecificationResource
+ * Class ProductSpecificationResource
  * @package CrCms\Mall\Http\Resources
  */
-class SpecificationResource extends Resource
+class ProductSpecificationResource extends Resource
 {
-    /**
-     * @var array
-     */
-    protected $defaultIncludes = ['category'];
-
     /**
      * @param \Illuminate\Http\Request $request
      * @return array
@@ -42,11 +37,11 @@ class SpecificationResource extends Resource
     }
 
     /**
-     * @param SpecificationModel $specificationModel
-     * @return CategoryResource
+     * @param ProductSpecificationModel $specificationModel
+     * @return ProductCategoryResource
      */
-    protected function includeCategory(SpecificationModel $specificationModel): CategoryResource
+    /*protected function includeCategory(ProductSpecificationModel $specificationModel): ProductCategoryResource
     {
-        return new CategoryResource($specificationModel->belongsToCategory);
-    }
+        return new ProductCategoryResource($specificationModel->belongsToCategory);
+    }*/
 }
