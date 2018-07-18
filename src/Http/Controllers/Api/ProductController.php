@@ -13,6 +13,9 @@ use CrCms\Foundation\App\Http\Controllers\Controller;
 use CrCms\Mall\Handlers\Product\ListHandler;
 use CrCms\Mall\Handlers\Product\ShowHandler;
 use CrCms\Mall\Http\Resources\ProductResource;
+use CrCms\Repository\Exceptions\ResourceNotFoundException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class ProductController
@@ -35,6 +38,10 @@ class ProductController extends Controller
      */
     public function show(ShowHandler $handler)
     {
-        return $this->response->resource($handler->handle(), ProductResource::class);
+        try {
+            return $this->response->resource($handler->handle(), ProductResource::class);
+        } catch (ModelNotFoundException | ResourceNotFoundException $exception) {
+            throw new NotFoundHttpException();
+        }
     }
 }

@@ -10,10 +10,11 @@
 namespace CrCms\Mall\Handlers\Product;
 
 use CrCms\Foundation\App\Handlers\AbstractHandler;
-use CrCms\Foundation\App\Handlers\Traits\HttpHandlerTrait;
+use CrCms\Foundation\App\Handlers\Traits\RequestHandlerTrait;
 use CrCms\Foundation\App\Handlers\Traits\RepositoryHandlerTrait;
 use CrCms\Mall\Models\ProductModel;
 use CrCms\Mall\Repositories\ProductRepository;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -23,7 +24,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class ShowHandler extends AbstractHandler
 {
-    use HttpHandlerTrait, RepositoryHandlerTrait;
+    use RequestHandlerTrait, RepositoryHandlerTrait;
 
     /**
      * ShowHandler constructor.
@@ -41,10 +42,10 @@ class ShowHandler extends AbstractHandler
      */
     public function handle(): ProductModel
     {
-        $model = $this->repository->byIntIdOrFail($this->request->input('id'));
+        $model = $this->repository->byIntIdOrFail($this->request->route()->parameters['product']);
 
         if ($model->sales_status !== 1) {
-            throw new NotFoundHttpException();
+            throw new ModelNotFoundException();
         }
 
         return $model;

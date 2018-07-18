@@ -10,7 +10,7 @@
 namespace CrCms\Mall\Handlers\Product;
 
 use CrCms\Foundation\App\Handlers\AbstractHandler;
-use CrCms\Foundation\App\Handlers\Traits\HttpHandlerTrait;
+use CrCms\Foundation\App\Handlers\Traits\RequestHandlerTrait;
 use CrCms\Foundation\App\Handlers\Traits\RepositoryHandlerTrait;
 use CrCms\Mall\Repositories\Magic\ProductMagic;
 use CrCms\Mall\Repositories\ProductRepository;
@@ -24,7 +24,7 @@ use Illuminate\Support\Carbon;
  */
 class ListHandler extends AbstractHandler
 {
-    use HttpHandlerTrait, RepositoryHandlerTrait;
+    use RequestHandlerTrait, RepositoryHandlerTrait;
 
     /**
      * ListHandler constructor.
