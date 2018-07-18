@@ -11,6 +11,7 @@ namespace CrCms\Mall\Http\Controllers\Api;
 
 use CrCms\Foundation\App\Http\Controllers\Controller;
 use CrCms\Mall\Handlers\Product\ListHandler;
+use CrCms\Mall\Handlers\Product\ShowHandler;
 use CrCms\Mall\Http\Resources\ProductResource;
 
 /**
@@ -26,5 +27,14 @@ class ProductController extends Controller
     public function index(ListHandler $handler)
     {
         return $this->response->paginator($handler->handle(), ProductResource::class);
+    }
+
+    /**
+     * @param ShowHandler $handler
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show(ShowHandler $handler)
+    {
+        return $this->response->resource($handler->handle(), ProductResource::class);
     }
 }

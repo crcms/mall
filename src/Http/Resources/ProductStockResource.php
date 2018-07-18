@@ -28,6 +28,7 @@ class ProductStockResource extends Resource
             'market_price' => $this->market_price,
             'price' => $this->price,
             'specification_value' => $this->specification_value,
+            'specification_id' => $this->specification_id,
             'stock' => $this->stock,
             'image' => $this->image,
         ];
