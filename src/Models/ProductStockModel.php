@@ -10,6 +10,7 @@
 namespace CrCms\Mall\Models;
 
 use CrCms\Foundation\App\Models\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Class ProductStockModel
@@ -21,4 +22,12 @@ class ProductStockModel extends Model
      * @var string
      */
     protected $table = 'mall_product_stocks';
+
+    /**
+     * @return BelongsTo
+     */
+    public function belongsToSpecification(): BelongsTo
+    {
+        return $this->belongsTo(ProductSpecificationModel::class);
+    }
 }
