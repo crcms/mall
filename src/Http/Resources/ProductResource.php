@@ -31,7 +31,7 @@ class ProductResource extends Resource
             'market_price' => $this->market_price,
             'price' => $this->price,
             'image' => $this->image,
-            $this->mergeWhen(false, [
+            $this->mergeWhen($request->route()->getName() === 'mall.products.show', [
                 'stock' => $this->stock,
                 'area_id' => $this->area_id,
                 'mall_user_id' => $this->mall_user_id,
@@ -47,7 +47,7 @@ class ProductResource extends Resource
      */
     protected function includeDetail(ProductModel $productModel): ProductDetailResource
     {
-        return new ProductDetailResource($productModel->belongsToDetail);
+        return new ProductDetailResource($productModel->hasOneDetail);
     }
 
     /**
@@ -65,7 +65,7 @@ class ProductResource extends Resource
      */
     protected function includeCategory(ProductModel $productModel): ProductCategoryResource
     {
-        return new ProductCategoryResource($productModel->belongsToCategory);
+        return new ProductCategoryResource($productModel->hasOneCategory);
     }
 
     /**
@@ -74,6 +74,6 @@ class ProductResource extends Resource
      */
     protected function includeStocks(ProductModel $productModel)
     {
-        return ProductStockResource::collection($productModel->belongsToManyStocks);
+        return ProductStockResource::collection($productModel->belongsToStocks()->get());
     }
 }

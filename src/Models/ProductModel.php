@@ -42,26 +42,26 @@ class ProductModel extends Model
     }
 
     /**
-     * @return BelongsTo
+     * @return HasOne
      */
-    public function belongsToBrand(): BelongsTo
+    public function hasOneBrand(): HasOne
     {
-        return $this->belongsTo(ProductBrandModel::class, 'brand_id', 'id');
+        return $this->hasOne(ProductBrandModel::class, 'id', 'brand_id');
+    }
+
+    /**
+     * @return HasOne
+     */
+    public function hasOneCategory(): HasOne
+    {
+        return $this->hasOne(ProductCategoryModel::class, 'id', 'category_id');
     }
 
     /**
      * @return BelongsTo
      */
-    public function belongsCategory(): BelongsTo
+    public function belongsToStocks(): BelongsTo
     {
-        return $this->belongsTo(ProductCategoryModel::class, 'category_id', 'id');
-    }
-
-    /**
-     * @return BelongsToMany
-     */
-    public function belongsToManyStocks(): BelongsToMany
-    {
-        return $this->belongsToMany(ProductStockModel::class);
+        return $this->belongsTo(ProductStockModel::class, 'id', 'product_id');
     }
 }
