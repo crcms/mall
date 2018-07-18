@@ -24,5 +24,11 @@ Route::prefix('api/v1/mall')->namespace('CrCms\Mall\Http\Controllers\Api')->midd
         /*Route::resource('mall', 'MallController')->names([
             'index' => 'mall.mall.index',
         ])->except(['show']);*/
+
     });
+
+    Route::apiResource('products', 'ProductController')->only(['index', 'show'])->names([
+        'index' => 'mall.products.index',
+        'show' => 'mall.products.show',
+    ]);
 });

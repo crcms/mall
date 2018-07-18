@@ -25,6 +25,6 @@ class ProductController extends Controller
      */
     public function index(ListHandler $handler)
     {
-        return $this->response->collection($handler->handle(),ProductResource::class);
+        return $this->response->paginator($handler->handle(), ProductResource::class);
     }
 }

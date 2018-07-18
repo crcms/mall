@@ -11,6 +11,7 @@ namespace CrCms\Mall\Repositories\Magic;
 
 use CrCms\Repository\AbstractMagic;
 use CrCms\Repository\Contracts\QueryRelate;
+use Illuminate\Support\Carbon;
 
 /**
  * Class ProductMagic
@@ -19,6 +20,13 @@ use CrCms\Repository\Contracts\QueryRelate;
 class ProductMagic extends AbstractMagic
 {
     /**
+     * @var array
+     */
+    protected $scenes = [
+        'frontend' => ['sort', 'added_at']
+    ];
+
+    /**
      * @param QueryRelate $queryRelate
      * @param array $sorts
      * @return QueryRelate
@@ -26,5 +34,15 @@ class ProductMagic extends AbstractMagic
     public function bySort(QueryRelate $queryRelate, array $sorts): QueryRelate
     {
         return $queryRelate->orderByArray($sorts);
+    }
+
+    /**
+     * @param QueryRelate $queryRelate
+     * @param string $dateTime
+     * @return QueryRelate
+     */
+    public function byAddedAt(QueryRelate $queryRelate, string $dateTime)
+    {
+        return $queryRelate->where('added_at', '>=', Carbon::parse($dateTime)->getTimestamp());
     }
 }

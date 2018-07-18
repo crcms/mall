@@ -12,11 +12,11 @@ namespace CrCms\Mall\Handlers\Product;
 use CrCms\Foundation\App\Handlers\AbstractHandler;
 use CrCms\Foundation\App\Handlers\Traits\HttpHandlerTrait;
 use CrCms\Foundation\App\Handlers\Traits\RepositoryHandlerTrait;
-use CrCms\Mall\Http\Resources\ProductResource;
 use CrCms\Mall\Repositories\Magic\ProductMagic;
 use CrCms\Mall\Repositories\ProductRepository;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 /**
  * Class ListHandler
@@ -38,15 +38,18 @@ class ListHandler extends AbstractHandler
     }
 
     /**
-     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|mixed
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
     public function handle(): LengthAwarePaginator
     {
         //$this->validate();
 
-        return $this->repository->paginate(new ProductMagic($this->options()));
+        return $this->repository->paginate(new ProductMagic($this->options(), 'frontend'));
     }
 
+    /**
+     * @return array
+     */
     protected function options(): array
     {
         $options = $this->request->all();
@@ -54,5 +57,9 @@ class ListHandler extends AbstractHandler
         if (empty($options['sort'])) {
             $options['sort'] = ['created_at' => 'desc'];
         }
+
+        $options['added_at'] = Carbon::now()->toDateTimeString();
+
+        return $options;
     }
 }
