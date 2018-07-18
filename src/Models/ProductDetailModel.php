@@ -18,6 +18,11 @@ use CrCms\Foundation\App\Models\Model;
 class ProductDetailModel extends Model
 {
     /**
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
      * @var string
      */
     protected $table = 'mall_product_details';

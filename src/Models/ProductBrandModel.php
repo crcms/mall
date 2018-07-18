@@ -21,7 +21,7 @@ class ProductBrandModel extends Model
     /**
      * @var string
      */
-    protected $table = 'mall_brands';
+    protected $table = 'mall_product_brands';
 
     /**
      * @return BelongsTo
