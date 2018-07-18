@@ -23,8 +23,13 @@ class ProductMagic extends AbstractMagic
      * @var array
      */
     protected $scenes = [
-        'frontend' => ['sort', 'added_at']
+        self::SCENES_FRONTEND => ['sort', 'added_at']
     ];
+
+    /**
+     *
+     */
+    const SCENES_FRONTEND = 'frontend';
 
     /**
      * @param QueryRelate $queryRelate

@@ -38,13 +38,13 @@ class ListHandler extends AbstractHandler
     }
 
     /**
-     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     * @return LengthAwarePaginator
      */
     public function handle(): LengthAwarePaginator
     {
         //$this->validate();
 
-        return $this->repository->paginate(new ProductMagic($this->options(), 'frontend'));
+        return $this->repository->paginate(new ProductMagic($this->options(), ProductMagic::SCENES_FRONTEND));
     }
 
     /**
