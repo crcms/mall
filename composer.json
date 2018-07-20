@@ -15,6 +15,7 @@
             "database/factories"
         ],
         "files": [
+            "src/helper.php"
         ],
         "psr-4": {
             "CrCms\\Mall\\": "src/"
