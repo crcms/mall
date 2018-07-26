@@ -2,8 +2,8 @@
 
 namespace CrCms\Mall\Http\Resources\Manage;
 
-use CrCms\Mall\Attributes\CategoryAttribute;
 use CrCms\Foundation\App\Http\Resources\Resource;
+use CrCms\Mall\Attributes\MallAttribute;
 use Illuminate\Http\Request;
 
 /**
@@ -28,7 +28,7 @@ class ProductCategoryResource extends Resource
             'name' => $this->name,
             'sign' => $this->sign,
             'status' => $this->status,
-            'status_convert' => CategoryAttribute::getStaticTransform(CategoryAttribute::KEY_STATUS . '.' . strval($this->status)),
+            'status_convert' => MallAttribute::getStaticTransform(MallAttribute::KEY_STATUS . '.' . strval($this->status)),
             'sort' => $this->sort,
             'created_at' => $this->created_at->toDateTimeString(),
             'updated_at' => $this->updated_at->toDateTimeString(),

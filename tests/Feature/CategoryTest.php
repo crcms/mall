@@ -9,8 +9,8 @@
 
 namespace CrCms\Mall\Tests\Feature;
 
-use CrCms\Mall\Attributes\CategoryAttribute;
-use CrCms\Mall\Models\CategoryModel;
+use CrCms\Mall\Attributes\MallAttribute;
+use CrCms\Mall\Models\ProductCategoryModel;
 use CrCms\Tests\CreatesApplication;
 use Illuminate\Foundation\Testing\TestCase;
 use Illuminate\Support\Str;
@@ -28,11 +28,13 @@ class CategoryTest extends TestCase
         $data = [
             'parent_id' => 0,
             'name' => Str::random(30),
-            'status' => CategoryAttribute::STATUS_ENABLE,
+            'status' => MallAttribute::STATUS_ENABLE,
             'sort' => mt_rand(5, 30)
         ];
+//        'index' => 'mall.manage.categories.index',
 
-        $response = $this->postJson('api/v1/mall/manage/categories', $data);
+
+        $response = $this->postJson(route('mall.manage.categories.index'), $data);
 
         $response->assertSuccessful();
 
@@ -55,11 +57,11 @@ class CategoryTest extends TestCase
         $sonData = [
             'parent_id' => $mainData['id'],
             'name' => 'son',
-            'status' => CategoryAttribute::STATUS_DISABLE,
+            'status' => MallAttribute::STATUS_DISABLE,
             'sort' => 0
         ];
-
-        $response = $this->postJson('api/v1/mall/manage/categories', $sonData);
+////            'store' => 'mall.manage.categories.store',
+        $response = $this->postJson(route('mall.manage.categories.store'), $sonData);
 
         $response->assertSuccessful();
         $array = json_decode($response->getContent(), true);
@@ -88,7 +90,8 @@ class CategoryTest extends TestCase
         $newData['name'] = Str::random(20);
         $newData['parent_id'] = $data['parent']['id'];
         unset($newData['sign']);
-        $response = $this->putJson('api/v1/mall/manage/categories/' . $data['id'], $newData);
+
+        $response = $this->putJson(route('mall.manage.categories.update', ['category' => $data['id']]), $newData);
 
         $response->assertSuccessful();
 
@@ -100,5 +103,23 @@ class CategoryTest extends TestCase
 
         $this->assertEquals($newData['name'], $result['name']);
 
+    }
+
+    /**
+     * @depends  testStore
+     * @param array $data
+     */
+    public function testDestroy(array $data)
+    {
+        $response = $this->deleteJson(route('mall.manage.categories.destroy', ['category' => $data['id']]));
+
+        $response->assertSuccessful();
+
+        $model = ProductCategoryModel::find($data['id']);
+        $this->assertEquals(null, $model);
+        $this->assertSoftDeleted(
+            (new ProductCategoryModel())->getTable(),
+            ['id' => $data['id'], 'name' => $data['name']]
+        );
     }
 }

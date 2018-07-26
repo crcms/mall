@@ -2,11 +2,13 @@
 
 namespace CrCms\Mall\Http\Controllers\Api\Manage;
 
-use CrCms\Mall\Http\Requests\Category\StoreRequest;
-use CrCms\Mall\Http\Requests\Category\UpdateRequest;
-use CrCms\Mall\Http\Resources\ProductCategoryResource;
+use CrCms\Mall\Handlers\Product\ListHandler;
+use CrCms\Mall\Handlers\Product\Manage\Category\DestroyHandler;
+use CrCms\Mall\Handlers\Product\Manage\Category\StoreHandler;
+use CrCms\Mall\Handlers\Product\Manage\Category\UpdateHandler;
 use CrCms\Mall\Repositories\ProductCategoryRepository;
 use CrCms\Foundation\App\Http\Controllers\Controller;
+use CrCms\Mall\Http\Resources\Manage\ProductCategoryResource;
 
 /**
  * Class ProductCategoryController
@@ -25,45 +27,50 @@ class ProductCategoryController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\Response
+     * @param ListHandler $handler
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(ListHandler $handler)
     {
-        $models = $this->repository->tree();
-
-        return $this->response->collection($models, ProductCategoryResource::class);
+        return $this->response->collection(
+            $handler,
+            ProductCategoryResource::class
+        );
     }
 
     /**
-     * @param StoreRequest $storeRequest
-     * @return \Illuminate\Http\Response
+     * @param StoreHandler $handler
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function store(StoreRequest $storeRequest)
+    public function store(StoreHandler $handler)
     {
-        $model = $this->repository->create($storeRequest->all());
-
-        return $this->response->resource($model, ProductCategoryResource::class, ['children']);
+        return $this->response->resource(
+            $handler->handle(),
+            ProductCategoryResource::class, ['children']
+        );
     }
 
     /**
-     * @param UpdateRequest $updateRequest
+     * @param UpdateHandler $handler
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(UpdateRequest $updateRequest, int $id)
+    public function update(UpdateHandler $handler, int $id)
     {
-        $model = $this->repository->update($updateRequest->all(), $id);
-
-        return $this->response->resource($model, ProductCategoryResource::class, ['children']);
+        return $this->response->resource(
+            $handler->handle(),
+            ProductCategoryResource::class, ['children']
+        );
     }
 
     /**
-     * @param $id
+     * @param DestroyHandler $handler
+     * @param string|int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(DestroyHandler $handler, $id)
     {
-        $rows = $this->repository->deleteSelfAndDescendants($id);
+        $rows = $handler->handle();
 
         return $this->response->noContent();
     }
