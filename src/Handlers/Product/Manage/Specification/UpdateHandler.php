@@ -15,6 +15,7 @@ use CrCms\Foundation\App\Handlers\Traits\RequestHandlerTrait;
 use CrCms\Mall\Models\ProductSpecificationModel;
 use CrCms\Mall\Repositories\ProductSpecificationRepository;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 /**
  * Class UpdateHandler
@@ -40,8 +41,33 @@ class UpdateHandler extends AbstractHandler
      */
     public function handle(): ProductSpecificationModel
     {
-        //$this->validate();
+        $this->validateRule();
 
         return $this->repository->update($this->request->all(), $this->request->route()->parameter('specification'));
+    }
+
+
+    /**
+     * @return array
+     */
+    protected function validateRule(): array
+    {
+        return $this->validate(
+            $this->request,
+            [
+                'id' => ['required', 'integer', Rule::exists($this->repository->getModel()->getTable())],
+                'name' => ['required', 'max:50'],
+                'category_id' => ['integer',],
+                'sort' => ['required', 'integer'],
+                'status' => ['required', 'integer'],
+            ],
+            [],
+            [
+                'name' => trans('mall::lang.specifications.name'),
+                'category_id' => trans('mall::lang.specifications.category_id'),
+                'sort' => trans('mall::lang.specifications.sort'),
+                'status' => trans('mall::lang.specifications.status'),
+            ]
+        );
     }
 }
