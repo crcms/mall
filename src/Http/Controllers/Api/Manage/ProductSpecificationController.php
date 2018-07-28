@@ -10,9 +10,10 @@
 namespace CrCms\Mall\Http\Controllers\Api\Manage;
 
 use CrCms\Foundation\App\Http\Controllers\Controller;
-use CrCms\Mall\Actions\Specification\StoreAction;
-use CrCms\Mall\Actions\Specification\UpdateAction;
-use CrCms\Mall\Http\Requests\Specification\QueryRequest;
+use CrCms\Mall\Handlers\Product\Manage\Specification\DestroyHandler;
+use CrCms\Mall\Handlers\Product\Manage\Specification\ListHandler;
+use CrCms\Mall\Handlers\Product\Manage\Specification\StoreHandler;
+use CrCms\Mall\Handlers\Product\Manage\Specification\UpdateHandler;
 use CrCms\Mall\Repositories\ProductSpecificationRepository;
 use CrCms\Mall\Http\Resources\ProductSpecificationResource;
 
@@ -31,25 +32,42 @@ class ProductSpecificationController extends Controller
         $this->repository = $repository;
     }
 
-    public function index(QueryRequest $request)
+    /**
+     * @param ListHandler $handler
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function index(ListHandler $handler)
     {
-
+        return $this->response->collection($handler->handle(), ProductSpecificationResource::class);
     }
 
-    public function store(StoreAction $action)
+    /**
+     * @param StoreHandler $handler
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function store(StoreHandler $handler)
     {
-        return $this->response->resource($action->handle(), ProductSpecificationResource::class);
+        return $this->response->resource($handler->handle(), ProductSpecificationResource::class);
     }
 
-    public function update(int $id, UpdateAction $action)
+    /**
+     * @param UpdateHandler $handler
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update(UpdateHandler $handler, int $id)
     {
-        $model = $action->handle(['id' => $id]);
-
-        return $this->response->resource($model, ProductSpecificationResource::class);
+        return $this->response->resource($handler->handle(), ProductSpecificationResource::class);
     }
 
-    public function destroy()
+    /**
+     * @param DestroyHandler $handler
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(DestroyHandler $handler)
     {
+        $rows = $handler->handle();
 
+        return $this->response->noContent();
     }
 }

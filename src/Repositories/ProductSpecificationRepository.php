@@ -9,8 +9,10 @@
 
 namespace CrCms\Mall\Repositories;
 
-use CrCms\Mall\Models\SpecificationModel;
+use CrCms\Mall\Models\ProductSpecificationModel;
+use CrCms\Repository\AbstractMagic;
 use CrCms\Repository\AbstractRepository;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 /**
  * Class SpecificationRepository
@@ -24,10 +26,20 @@ class ProductSpecificationRepository extends AbstractRepository
     protected $guard = ['name', 'category_id', 'sort', 'status'];
 
     /**
-     * @return SpecificationModel
+     * @return ProductSpecificationModel
      */
-    public function newModel(): SpecificationModel
+    public function newModel(): ProductSpecificationModel
     {
-        return app(SpecificationModel::class);
+        return app(ProductSpecificationModel::class);
+    }
+
+    /**
+     * @param AbstractMagic|null $magic
+     * @param int $perPage
+     * @return LengthAwarePaginator
+     */
+    public function paginate(AbstractMagic $magic = null, int $perPage = 15): LengthAwarePaginator
+    {
+        return $this->whenMagic($magic)->paginate($perPage);
     }
 }

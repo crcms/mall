@@ -2,7 +2,7 @@
 
 /**
  * @author simon <crcms@crcms.cn>
- * @datetime 2018-07-14 11:24
+ * @datetime 2018-07-27 06:54
  * @link http://crcms.cn/
  * @copyright Copyright &copy; 2018 Rights Reserved CRCMS
  */
@@ -12,20 +12,20 @@ namespace CrCms\Mall\Handlers\Product\Manage\Specification;
 use CrCms\Foundation\App\Handlers\AbstractHandler;
 use CrCms\Foundation\App\Handlers\Traits\RepositoryHandlerTrait;
 use CrCms\Foundation\App\Handlers\Traits\RequestHandlerTrait;
-use CrCms\Mall\Models\ProductSpecificationModel;
+use CrCms\Mall\Repositories\ProductCategoryRepository;
 use CrCms\Mall\Repositories\ProductSpecificationRepository;
 use Illuminate\Http\Request;
 
 /**
- * Class StoreHandler
+ * Class DestroyHandler
  * @package CrCms\Mall\Handlers\Product\Manage\Specification
  */
-class StoreHandler extends AbstractHandler
+class DestroyHandler extends AbstractHandler
 {
     use RequestHandlerTrait, RepositoryHandlerTrait;
 
     /**
-     * StoreHandler constructor.
+     * DestroyHandler constructor.
      * @param Request $request
      * @param ProductSpecificationRepository $repository
      */
@@ -36,13 +36,10 @@ class StoreHandler extends AbstractHandler
     }
 
     /**
-     * @param array $data
-     * @return ProductSpecificationModel
+     * @return int
      */
-    public function handle(): ProductSpecificationModel
+    public function handle(): int
     {
-        //$this->validate();
-
-        return $this->repository->create($this->request->all());
+        return $this->repository->delete($this->request->route()->parameter('specification'));
     }
 }
