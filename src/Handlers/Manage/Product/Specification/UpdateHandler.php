@@ -7,7 +7,7 @@
  * @copyright Copyright &copy; 2018 Rights Reserved CRCMS
  */
 
-namespace CrCms\Mall\Handlers\Product\Manage\Specification;
+namespace CrCms\Mall\Handlers\Manage\Product\Specification;
 
 use CrCms\Foundation\App\Handlers\AbstractHandler;
 use CrCms\Foundation\App\Handlers\Traits\RepositoryHandlerTrait;
@@ -19,7 +19,7 @@ use Illuminate\Validation\Rule;
 
 /**
  * Class UpdateHandler
- * @package CrCms\Mall\Handlers\Product\Manage\Specification
+ * @package CrCms\Mall\Handlers\Manage\Product\Specification
  */
 class UpdateHandler extends AbstractHandler
 {

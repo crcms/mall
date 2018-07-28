@@ -7,7 +7,7 @@
  * @copyright Copyright &copy; 2018 Rights Reserved CRCMS
  */
 
-namespace CrCms\Mall\Handlers\Product\Manage\Category;
+namespace CrCms\Mall\Handlers\Manage\Product\Category;
 
 use CrCms\Foundation\App\Handlers\AbstractHandler;
 use CrCms\Foundation\App\Handlers\Traits\RepositoryHandlerTrait;
@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 
 /**
  * Class DestroyHandler
- * @package CrCms\Mall\Handlers\Product\Manage\Category
+ * @package CrCms\Mall\Handlers\Manage\Product\Category
  */
 class DestroyHandler extends AbstractHandler
 {

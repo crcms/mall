@@ -7,18 +7,17 @@
  * @copyright Copyright &copy; 2018 Rights Reserved CRCMS
  */
 
-namespace CrCms\Mall\Handlers\Product\Manage\Specification;
+namespace CrCms\Mall\Handlers\Manage\Product\Specification;
 
 use CrCms\Foundation\App\Handlers\AbstractHandler;
 use CrCms\Foundation\App\Handlers\Traits\RepositoryHandlerTrait;
 use CrCms\Foundation\App\Handlers\Traits\RequestHandlerTrait;
-use CrCms\Mall\Repositories\ProductCategoryRepository;
 use CrCms\Mall\Repositories\ProductSpecificationRepository;
 use Illuminate\Http\Request;
 
 /**
  * Class DestroyHandler
- * @package CrCms\Mall\Handlers\Product\Manage\Specification
+ * @package CrCms\Mall\Handlers\Manage\Product\Specification
  */
 class DestroyHandler extends AbstractHandler
 {

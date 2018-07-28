@@ -10,10 +10,10 @@
 namespace CrCms\Mall\Http\Controllers\Api\Manage;
 
 use CrCms\Foundation\App\Http\Controllers\Controller;
-use CrCms\Mall\Handlers\Product\Manage\Specification\DestroyHandler;
-use CrCms\Mall\Handlers\Product\Manage\Specification\ListHandler;
-use CrCms\Mall\Handlers\Product\Manage\Specification\StoreHandler;
-use CrCms\Mall\Handlers\Product\Manage\Specification\UpdateHandler;
+use CrCms\Mall\Handlers\Manage\Product\Specification\DestroyHandler;
+use CrCms\Mall\Handlers\Manage\Product\Specification\ListHandler;
+use CrCms\Mall\Handlers\Manage\Product\Specification\StoreHandler;
+use CrCms\Mall\Handlers\Manage\Product\Specification\UpdateHandler;
 use CrCms\Mall\Repositories\ProductSpecificationRepository;
 use CrCms\Mall\Http\Resources\ProductSpecificationResource;
 
