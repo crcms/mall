@@ -33,7 +33,7 @@ class ProductRepository extends AbstractRepository
      * @param int $perPage
      * @return LengthAwarePaginator
      */
-    public function paginate(AbstractMagic $magic = null,int $perPage = 15): LengthAwarePaginator
+    public function paginate(AbstractMagic $magic = null, int $perPage = 15): LengthAwarePaginator
     {
         return $this->whenMagic($magic)->paginate($perPage);
     }
