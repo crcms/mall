@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 
 /**
  * Class DestroyHandler
- * @package CrCms\Modules\mall\src\Handlers\Product\Manage\Category
+ * @package CrCms\Mall\Handlers\Product\Manage\Category
  */
 class DestroyHandler extends AbstractHandler
 {
