@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @author simon <crcms@crcms.cn>
+ * @author simon <simon@crcms.cn>
  * @datetime 2018-07-17 20:19
  * @link http://crcms.cn/
  * @copyright Copyright &copy; 2018 Rights Reserved CRCMS
