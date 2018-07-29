@@ -21,6 +21,13 @@ Route::prefix('api/v1/mall')->namespace('CrCms\Mall\Http\Controllers\Api')->midd
             'destroy' => 'mall.manage.specifications.destroy',
         ]);
 
+        Route::apiResource('brands', 'ProductBrandController')->except('show')->names([
+            'index' => 'mall.manage.brands.index',
+            'store' => 'mall.manage.brands.store',
+            'update' => 'mall.manage.brands.update',
+            'destroy' => 'mall.manage.brands.destroy',
+        ]);
+
         /*Route::resource('mall', 'MallController')->names([
             'index' => 'mall.mall.index',
         ])->except(['show']);*/

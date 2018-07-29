@@ -11,6 +11,8 @@ namespace CrCms\Mall\Repositories;
 
 use CrCms\Foundation\App\Repositories\AbstractRepository;
 use CrCms\Mall\Models\ProductBrandModel;
+use CrCms\Repository\AbstractMagic;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 /**
  * Class ProductBrandRepository
@@ -19,6 +21,13 @@ use CrCms\Mall\Models\ProductBrandModel;
 class ProductBrandRepository extends AbstractRepository
 {
     /**
+     * @var array
+     */
+    protected $scenes = [
+        'default' => ['name', 'logo', 'status', 'recommend', 'sort'],
+    ];
+
+    /**
      * @return ProductBrandModel
      */
     public function newModel(): ProductBrandModel
@@ -26,4 +35,13 @@ class ProductBrandRepository extends AbstractRepository
         return app(ProductBrandModel::class);
     }
 
+    /**
+     * @param AbstractMagic|null $magic
+     * @param int $perPage
+     * @return LengthAwarePaginator
+     */
+    public function paginate(AbstractMagic $magic = null, int $perPage = 15): LengthAwarePaginator
+    {
+        return $this->whenMagic($magic)->paginate($perPage);
+    }
 }
