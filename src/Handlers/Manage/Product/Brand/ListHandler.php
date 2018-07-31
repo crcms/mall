@@ -12,8 +12,8 @@ namespace CrCms\Mall\Handlers\Manage\Product\Brand;
 use CrCms\Foundation\App\Handlers\AbstractHandler;
 use CrCms\Foundation\App\Handlers\Traits\RepositoryHandlerTrait;
 use CrCms\Foundation\App\Handlers\Traits\RequestHandlerTrait;
-use CrCms\Mall\Repositories\Magic\ProductBrandMagic;
-use CrCms\Mall\Repositories\ProductBrandRepository;
+use CrCms\Mall\Repositories\Magic\Product\BrandMagic as ProductBrandMagic;
+use CrCms\Mall\Repositories\Product\BrandRepository as ProductBrandRepository;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 

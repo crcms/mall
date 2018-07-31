@@ -9,7 +9,7 @@
 
 namespace CrCms\Mall\Tests\Feature;
 
-use CrCms\Mall\Models\CategoryModel;
+use CrCms\Mall\Models\Product\CategoryModel;
 use CrCms\Tests\TestCase;
 use Illuminate\Support\Facades\DB;
 

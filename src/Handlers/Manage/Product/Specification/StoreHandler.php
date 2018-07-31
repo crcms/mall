@@ -12,8 +12,8 @@ namespace CrCms\Mall\Handlers\Manage\Product\Specification;
 use CrCms\Foundation\App\Handlers\AbstractHandler;
 use CrCms\Foundation\App\Handlers\Traits\RepositoryHandlerTrait;
 use CrCms\Foundation\App\Handlers\Traits\RequestHandlerTrait;
-use CrCms\Mall\Models\ProductSpecificationModel;
-use CrCms\Mall\Repositories\ProductSpecificationRepository;
+use CrCms\Mall\Models\Product\SpecificationModel as ProductSpecificationModel;
+use CrCms\Mall\Repositories\Product\SpecificationRepository as ProductSpecificationRepository;
 use Illuminate\Http\Request;
 
 /**

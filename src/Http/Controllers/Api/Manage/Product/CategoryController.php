@@ -6,26 +6,15 @@ use CrCms\Mall\Handlers\Manage\Product\Category\DestroyHandler;
 use CrCms\Mall\Handlers\Manage\Product\Category\ListHandler;
 use CrCms\Mall\Handlers\Manage\Product\Category\StoreHandler;
 use CrCms\Mall\Handlers\Manage\Product\Category\UpdateHandler;
-use CrCms\Mall\Repositories\ProductCategoryRepository;
 use CrCms\Foundation\App\Http\Controllers\Controller;
-use CrCms\Mall\Http\Resources\Manage\ProductCategoryResource;
+use CrCms\Mall\Http\Resources\Manage\Product\CategoryResource as ProductCategoryResource;
 
 /**
- * Class ProductCategoryController
+ * Class CategoryController
  * @package CrCms\Mall\Http\Controllers\Api\Manage
  */
-class ProductCategoryController extends Controller
+class CategoryController extends Controller
 {
-    /**
-     * ProductCategoryController constructor.
-     * @param ProductCategoryRepository $categoryRepository
-     */
-    public function __construct(ProductCategoryRepository $categoryRepository)
-    {
-        parent::__construct();
-        $this->repository = $categoryRepository;
-    }
-
     /**
      * @param ListHandler $handler
      * @return \Illuminate\Http\JsonResponse

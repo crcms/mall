@@ -7,7 +7,7 @@
  * @copyright Copyright &copy; 2018 Rights Reserved CRCMS
  */
 
-namespace CrCms\Mall\Repositories;
+namespace CrCms\Mall\Repositories\Product;
 
 use CrCms\Mall\Models\Product\SpecificationModel;
 use CrCms\Repository\AbstractMagic;
@@ -16,7 +16,7 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 /**
  * Class SpecificationRepository
- * @package CrCms\Mall\Repositories
+ * @package CrCms\Mall\Repositories\Product
  */
 class SpecificationRepository extends AbstractRepository
 {

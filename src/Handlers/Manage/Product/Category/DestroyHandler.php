@@ -12,7 +12,7 @@ namespace CrCms\Mall\Handlers\Manage\Product\Category;
 use CrCms\Foundation\App\Handlers\AbstractHandler;
 use CrCms\Foundation\App\Handlers\Traits\RepositoryHandlerTrait;
 use CrCms\Foundation\App\Handlers\Traits\RequestHandlerTrait;
-use CrCms\Mall\Repositories\ProductCategoryRepository;
+use CrCms\Mall\Repositories\Product\CategoryRepository as ProductCategoryRepository;
 use Illuminate\Http\Request;
 
 /**

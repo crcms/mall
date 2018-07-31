@@ -30,7 +30,7 @@ class BrandTest extends TestCase
             'sort' => mt_rand(1, 999),
         ];
 
-        $response = $this->postJson(route('mall.manage.brands.store'), $data);
+        $response = $this->postJson(route('mall.manage.product.brands.store'), $data);
 
         $response->assertSuccessful();
 
@@ -55,7 +55,7 @@ class BrandTest extends TestCase
         $data['name'] = Str::random(10);
         $data['status'] = MallAttribute::STATUS_DISABLE;
 
-        $response = $this->putJson(route('mall.manage.brands.update',['brand'=>$data['id']]),$data);
+        $response = $this->putJson(route('mall.manage.product.brands.update',['brand'=>$data['id']]),$data);
 
         $response->assertSuccessful();
 
@@ -77,7 +77,7 @@ class BrandTest extends TestCase
      */
     public function testDestroy(array $data)
     {
-        $response = $this->putJson(route('mall.manage.brands.destroy',['brand'=>$data['id']]),$data);
+        $response = $this->putJson(route('mall.manage.product.brands.destroy',['brand'=>$data['id']]),$data);
 
         $response->assertSuccessful();
     }

@@ -14,24 +14,10 @@ use CrCms\Mall\Handlers\Manage\Product\Specification\DestroyHandler;
 use CrCms\Mall\Handlers\Manage\Product\Specification\ListHandler;
 use CrCms\Mall\Handlers\Manage\Product\Specification\StoreHandler;
 use CrCms\Mall\Handlers\Manage\Product\Specification\UpdateHandler;
-use CrCms\Mall\Repositories\ProductSpecificationRepository;
-use CrCms\Mall\Http\Resources\ProductSpecificationResource;
+use CrCms\Mall\Http\Resources\Product\SpecificationResource as ProductSpecificationResource;
 
-/**
- * Class ProductSpecificationController
- * @package CrCms\Mall\Http\Controllers\Api\Manage
- */
 class ProductSpecificationController extends Controller
 {
-    /**
-     * ProductSpecificationController constructor.
-     * @param ProductSpecificationRepository $repository
-     */
-    public function __construct(ProductSpecificationRepository $repository)
-    {
-        $this->repository = $repository;
-    }
-
     /**
      * @param ListHandler $handler
      * @return \Illuminate\Http\JsonResponse

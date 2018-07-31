@@ -12,7 +12,7 @@ namespace CrCms\Mall\Handlers\Manage\Product\Category;
 
 use CrCms\Foundation\App\Handlers\AbstractHandler;
 use CrCms\Foundation\App\Handlers\Traits\RepositoryHandlerTrait;
-use CrCms\Mall\Repositories\ProductCategoryRepository;
+use CrCms\Mall\Repositories\Product\CategoryRepository;
 use Illuminate\Support\Collection;
 
 /**
@@ -25,9 +25,9 @@ class ListHandler extends AbstractHandler
 
     /**
      * ListHandler constructor.
-     * @param ProductCategoryRepository $repository
+     * @param CategoryRepository $repository
      */
-    public function __construct(ProductCategoryRepository $repository)
+    public function __construct(CategoryRepository $repository)
     {
         $this->repository = $repository;
     }

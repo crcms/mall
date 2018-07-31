@@ -14,13 +14,13 @@ use CrCms\Mall\Handlers\Manage\Product\Brand\DestroyHandler;
 use CrCms\Mall\Handlers\Manage\Product\Brand\ListHandler;
 use CrCms\Mall\Handlers\Manage\Product\Brand\StoreHandler;
 use CrCms\Mall\Handlers\Manage\Product\Brand\UpdateHandler;
-use CrCms\Mall\Http\Resources\Manage\ProductBrandResource;
+use CrCms\Mall\Http\Resources\Manage\Product\BrandResource as ProductBrandResource;
 
 /**
- * Class ProductBrandController
+ * Class BrandController
  * @package CrCms\Mall\Http\Controllers\Api\Manage
  */
-class ProductBrandController extends Controller
+class BrandController extends Controller
 {
     /**
      * @param ListHandler $handler

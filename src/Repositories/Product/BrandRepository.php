@@ -7,7 +7,7 @@
  * @copyright Copyright &copy; 2018 Rights Reserved CRCMS
  */
 
-namespace CrCms\Mall\Repositories;
+namespace CrCms\Mall\Repositories\Product;
 
 use CrCms\Foundation\App\Repositories\AbstractRepository;
 use CrCms\Mall\Models\Product\BrandModel;
@@ -16,7 +16,7 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 /**
  * Class BrandRepository
- * @package CrCms\Mall\Repositories
+ * @package CrCms\Mall\Repositories\Product
  */
 class BrandRepository extends AbstractRepository
 {

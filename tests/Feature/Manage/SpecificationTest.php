@@ -30,7 +30,7 @@ class SpecificationTest extends TestCase
             'sort' => mt_rand(1, 999),
         ];
 
-        $response = $this->postJson(route('mall.manage.specifications.store'), $data);
+        $response = $this->postJson(route('mall.manage.product.specifications.store'), $data);
 
         $response->assertSuccessful();
 
@@ -53,7 +53,7 @@ class SpecificationTest extends TestCase
         $data['name'] = Str::random(10);
         $data['status'] = MallAttribute::STATUS_DISABLE;
 
-        $response = $this->putJson(route('mall.manage.specifications.update',['specification'=>$data['id']]),$data);
+        $response = $this->putJson(route('mall.manage.product.specifications.update',['specification'=>$data['id']]),$data);
 
         $response->assertSuccessful();
 
@@ -73,7 +73,7 @@ class SpecificationTest extends TestCase
      */
     public function testDestroy(array $data)
     {
-        $response = $this->putJson(route('mall.manage.specifications.destroy',['specification'=>$data['id']]),$data);
+        $response = $this->putJson(route('mall.manage.product.specifications.destroy',['specification'=>$data['id']]),$data);
 
         $response->assertSuccessful();
     }

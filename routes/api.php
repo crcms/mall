@@ -7,25 +7,25 @@ Route::prefix('api/v1/mall')->namespace('CrCms\Mall\Http\Controllers\Api')->midd
 
     Route::prefix('manage')->namespace('Manage')->group(function () {
 
-        Route::apiResource('categories', 'ProductCategoryController')->except('show')->names([
-            'index' => 'mall.manage.categories.index',
-            'store' => 'mall.manage.categories.store',
-            'update' => 'mall.manage.categories.update',
-            'destroy' => 'mall.manage.categories.destroy',
+        Route::apiResource('categories', 'Product\CategoryController')->except('show')->names([
+            'index' => 'mall.manage.product.categories.index',
+            'store' => 'mall.manage.product.categories.store',
+            'update' => 'mall.manage.product.categories.update',
+            'destroy' => 'mall.manage.product.categories.destroy',
         ]);
 
-        Route::apiResource('specifications', 'ProductSpecificationController')->except('show')->names([
-            'index' => 'mall.manage.specifications.index',
-            'store' => 'mall.manage.specifications.store',
-            'update' => 'mall.manage.specifications.update',
-            'destroy' => 'mall.manage.specifications.destroy',
+        Route::apiResource('specifications', 'Product\SpecificationController')->except('show')->names([
+            'index' => 'mall.manage.product.specifications.index',
+            'store' => 'mall.manage.product.specifications.store',
+            'update' => 'mall.manage.product.specifications.update',
+            'destroy' => 'mall.manage.product.specifications.destroy',
         ]);
 
-        Route::apiResource('brands', 'ProductBrandController')->except('show')->names([
-            'index' => 'mall.manage.brands.index',
-            'store' => 'mall.manage.brands.store',
-            'update' => 'mall.manage.brands.update',
-            'destroy' => 'mall.manage.brands.destroy',
+        Route::apiResource('brands', 'Product\BrandController')->except('show')->names([
+            'index' => 'mall.manage.product.brands.index',
+            'store' => 'mall.manage.product.brands.store',
+            'update' => 'mall.manage.product.brands.update',
+            'destroy' => 'mall.manage.product.brands.destroy',
         ]);
 
         /*Route::resource('mall', 'MallController')->names([

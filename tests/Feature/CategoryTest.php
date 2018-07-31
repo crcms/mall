@@ -10,7 +10,7 @@
 namespace CrCms\Mall\Tests\Feature;
 
 use CrCms\Mall\Attributes\MallAttribute;
-use CrCms\Mall\Models\ProductCategoryModel;
+use CrCms\Mall\Models\Product\CategoryModel as ProductCategoryModel;
 use CrCms\Tests\CreatesApplication;
 use Illuminate\Foundation\Testing\TestCase;
 use Illuminate\Support\Str;
@@ -34,7 +34,7 @@ class CategoryTest extends TestCase
 //        'index' => 'mall.manage.categories.index',
 
 
-        $response = $this->postJson(route('mall.manage.categories.index'), $data);
+        $response = $this->postJson(route('mall.manage.product.categories.index'), $data);
 
         $response->assertSuccessful();
 
@@ -61,7 +61,7 @@ class CategoryTest extends TestCase
             'sort' => 0
         ];
 ////            'store' => 'mall.manage.categories.store',
-        $response = $this->postJson(route('mall.manage.categories.store'), $sonData);
+        $response = $this->postJson(route('mall.manage.product.categories.store'), $sonData);
 
         $response->assertSuccessful();
         $array = json_decode($response->getContent(), true);
@@ -91,7 +91,7 @@ class CategoryTest extends TestCase
         $newData['parent_id'] = $data['parent']['id'];
         unset($newData['sign']);
 
-        $response = $this->putJson(route('mall.manage.categories.update', ['category' => $data['id']]), $newData);
+        $response = $this->putJson(route('mall.manage.product.categories.update', ['category' => $data['id']]), $newData);
 
         $response->assertSuccessful();
 
@@ -111,7 +111,7 @@ class CategoryTest extends TestCase
      */
     public function testDestroy(array $data)
     {
-        $response = $this->deleteJson(route('mall.manage.categories.destroy', ['category' => $data['id']]));
+        $response = $this->deleteJson(route('mall.manage.product.categories.destroy', ['category' => $data['id']]));
 
         $response->assertSuccessful();
 

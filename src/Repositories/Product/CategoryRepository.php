@@ -1,12 +1,16 @@
 <?php
 
-namespace CrCms\Mall\Repositories;
+namespace CrCms\Mall\Repositories\Product;
 
 use CrCms\Mall\Attributes\MallAttribute;
 use CrCms\Mall\Models\Product\CategoryModel;
 use CrCms\Foundation\App\Repositories\AbstractRepository;
 use Illuminate\Support\Collection;
 
+/**
+ * Class CategoryRepository
+ * @package CrCms\Mall\Repositories\Product
+ */
 class CategoryRepository extends AbstractRepository
 {
     /**

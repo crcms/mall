@@ -12,8 +12,8 @@ namespace CrCms\Mall\Handlers\Manage\Product\Specification;
 use CrCms\Foundation\App\Handlers\AbstractHandler;
 use CrCms\Foundation\App\Handlers\Traits\RepositoryHandlerTrait;
 use CrCms\Foundation\App\Handlers\Traits\RequestHandlerTrait;
-use CrCms\Mall\Repositories\ProductSpecificationRepository;
-use CrCms\Modules\mall\src\Repositories\Magic\ProductSpecificationMagic;
+use CrCms\Mall\Repositories\Product\SpecificationRepository as ProductSpecificationRepository;
+use CrCms\Modules\mall\src\Repositories\Magic\Product\SpecificationMagic as ProductSpecificationMagic;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Http\Request;
 
