@@ -10,19 +10,14 @@
 namespace CrCms\Mall\Http\Resources;
 
 use CrCms\Foundation\App\Http\Resources\Resource;
+use CrCms\Mall\Http\Resources\Product\BrandResource;
+use CrCms\Mall\Http\Resources\Product\CategoryResource;
+use CrCms\Mall\Http\Resources\Product\StockResource;
 use CrCms\Mall\Models\ProductModel;
-use CrCms\Modules\mall\src\Http\Resources\ProductDetailResource;
+use CrCms\Modules\mall\src\Http\Resources\Product\DetailResource;
 
-/**
- * Class ProductResource
- * @package CrCms\Mall\Http\Resources
- */
 class ProductResource extends Resource
 {
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @return array
-     */
     public function toArray($request): array
     {
         return [
@@ -41,39 +36,23 @@ class ProductResource extends Resource
         ];
     }
 
-    /**
-     * @param ProductModel $productModel
-     * @return ProductDetailResource
-     */
-    protected function includeDetail(ProductModel $productModel): ProductDetailResource
+    protected function includeDetail(ProductModel $productModel): DetailResource
     {
-        return new ProductDetailResource($productModel->hasOneDetail);
+        return new DetailResource($productModel->hasOneDetail);
     }
 
-    /**
-     * @param ProductModel $productModel
-     * @return ProductBrandResource
-     */
-    protected function includeBrand(ProductModel $productModel): ProductBrandResource
+    protected function includeBrand(ProductModel $productModel): BrandResource
     {
-        return new ProductBrandResource($productModel->hasOneBrand);
+        return new BrandResource($productModel->hasOneBrand);
     }
 
-    /**
-     * @param ProductModel $productModel
-     * @return ProductCategoryResource
-     */
-    protected function includeCategory(ProductModel $productModel): ProductCategoryResource
+    protected function includeCategory(ProductModel $productModel): CategoryResource
     {
-        return new ProductCategoryResource($productModel->hasOneCategory);
+        return new CategoryResource($productModel->hasOneCategory);
     }
 
-    /**
-     * @param ProductModel $productModel
-     * @return \CrCms\Foundation\App\Http\Resources\ResourceCollection
-     */
     protected function includeStocks(ProductModel $productModel)
     {
-        return ProductStockResource::collection($productModel->belongsToStocks()->get());
+        return StockResource::collection($productModel->belongsToStocks()->get());
     }
 }

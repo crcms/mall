@@ -2,12 +2,12 @@
 
 namespace CrCms\Mall\Repositories;
 
-use CrCms\Mall\Attributes\CategoryAttribute;
-use CrCms\Mall\Models\ProductCategoryModel;
+use CrCms\Mall\Attributes\MallAttribute;
+use CrCms\Mall\Models\Product\CategoryModel;
 use CrCms\Foundation\App\Repositories\AbstractRepository;
 use Illuminate\Support\Collection;
 
-class ProductCategoryRepository extends AbstractRepository
+class CategoryRepository extends AbstractRepository
 {
     /**
      * @var array
@@ -15,11 +15,11 @@ class ProductCategoryRepository extends AbstractRepository
     protected $guard = ['id', 'name', 'sign', 'sort', 'icon', 'status', 'parent_id'];
 
     /**
-     * @return ProductCategoryModel
+     * @return CategoryModel
      */
-    public function newModel(): ProductCategoryModel
+    public function newModel(): CategoryModel
     {
-        return app(ProductCategoryModel::class);
+        return app(CategoryModel::class);
     }
 
     /**
@@ -27,7 +27,7 @@ class ProductCategoryRepository extends AbstractRepository
      */
     public function treeByStatusEnable(): Collection
     {
-        return $this->newModel()->where('status', CategoryAttribute::STATUS_ENABLE)->orderBy($this->getModel()->getCreatedAtColumn(), 'desc')->toTree();
+        return $this->newModel()->where('status', MallAttribute::STATUS_ENABLE)->orderBy($this->getModel()->getCreatedAtColumn(), 'desc')->toTree();
     }
 
     /**

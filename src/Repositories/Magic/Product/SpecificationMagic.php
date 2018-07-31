@@ -2,21 +2,21 @@
 
 /**
  * @author simon <simon@crcms.cn>
- * @datetime 2018-07-29 18:49
+ * @datetime 2018-07-28 16:24
  * @link http://crcms.cn/
  * @copyright Copyright &copy; 2018 Rights Reserved CRCMS
  */
 
-namespace CrCms\Mall\Repositories\Magic;
+namespace CrCms\Modules\mall\src\Repositories\Magic\Product;
 
 use CrCms\Repository\AbstractMagic;
 use CrCms\Repository\Contracts\QueryRelate;
 
 /**
- * Class ProductBrandMagic
- * @package CrCms\Mall\Repositories\Magic
+ * Class SpecificationMagic
+ * @package CrCms\Modules\mall\src\Repositories\Magic\Product
  */
-class ProductBrandMagic extends AbstractMagic
+class SpecificationMagic extends AbstractMagic
 {
     /**
      * @param QueryRelate $queryRelate

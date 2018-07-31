@@ -7,15 +7,11 @@
  * @copyright Copyright &copy; 2018 Rights Reserved CRCMS
  */
 
-namespace CrCms\Modules\mall\src\Http\Resources;
+namespace CrCms\Modules\mall\src\Http\Resources\Product;
 
 use CrCms\Foundation\App\Http\Resources\Resource;
 
-/**
- * Class ProductDetailResource
- * @package CrCms\Modules\mall\src\Http\Resources
- */
-class ProductDetailResource extends Resource
+class DetailResource extends Resource
 {
     /**
      * @param \Illuminate\Http\Request $request

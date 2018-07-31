@@ -1,15 +1,11 @@
 <?php
 
-namespace CrCms\Mall\Http\Resources;
+namespace CrCms\Mall\Http\Resources\Product;
 
 use CrCms\Foundation\App\Http\Resources\Resource;
 use Illuminate\Http\Request;
 
-/**
- * Class ProductCategoryResource
- * @package CrCms\Mall\Http\Resources
- */
-class ProductCategoryResource extends Resource
+class CategoryResource extends Resource
 {
     /**
      * @var array

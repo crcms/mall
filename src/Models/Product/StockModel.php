@@ -7,16 +7,16 @@
  * @copyright Copyright &copy; 2018 Rights Reserved CRCMS
  */
 
-namespace CrCms\Mall\Models;
+namespace CrCms\Mall\Models\Product;
 
 use CrCms\Foundation\App\Models\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * Class ProductStockModel
+ * Class StockModel
  * @package CrCms\Mall\Models
  */
-class ProductStockModel extends Model
+class StockModel extends Model
 {
     /**
      * @var string
@@ -28,6 +28,6 @@ class ProductStockModel extends Model
      */
     public function belongsToSpecification(): BelongsTo
     {
-        return $this->belongsTo(ProductSpecificationModel::class);
+        return $this->belongsTo(SpecificationModel::class);
     }
 }

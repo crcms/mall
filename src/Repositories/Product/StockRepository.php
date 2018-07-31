@@ -10,19 +10,19 @@
 namespace CrCms\Mall\Repositories;
 
 use CrCms\Foundation\App\Repositories\AbstractRepository;
-use CrCms\Mall\Models\ProductStockModel;
+use CrCms\Mall\Models\Product\StockModel;
 
 /**
- * Class ProductStockRepository
+ * Class StockRepository
  * @package CrCms\Mall\Repositories
  */
-class ProductStockRepository extends AbstractRepository
+class StockRepository extends AbstractRepository
 {
     /**
-     * @return ProductStockModel
+     * @return StockModel
      */
-    public function newModel(): ProductStockModel
+    public function newModel(): StockModel
     {
-        return app(ProductStockModel::class);
+        return app(StockModel::class);
     }
 }

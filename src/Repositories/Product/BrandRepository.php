@@ -10,15 +10,15 @@
 namespace CrCms\Mall\Repositories;
 
 use CrCms\Foundation\App\Repositories\AbstractRepository;
-use CrCms\Mall\Models\ProductBrandModel;
+use CrCms\Mall\Models\Product\BrandModel;
 use CrCms\Repository\AbstractMagic;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 /**
- * Class ProductBrandRepository
+ * Class BrandRepository
  * @package CrCms\Mall\Repositories
  */
-class ProductBrandRepository extends AbstractRepository
+class BrandRepository extends AbstractRepository
 {
     /**
      * @var array
@@ -28,11 +28,11 @@ class ProductBrandRepository extends AbstractRepository
     ];
 
     /**
-     * @return ProductBrandModel
+     * @return BrandModel
      */
-    public function newModel(): ProductBrandModel
+    public function newModel(): BrandModel
     {
-        return app(ProductBrandModel::class);
+        return app(BrandModel::class);
     }
 
     /**

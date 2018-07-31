@@ -7,17 +7,17 @@
  * @copyright Copyright &copy; 2018 Rights Reserved CRCMS
  */
 
-namespace CrCms\Mall\Models;
+namespace CrCms\Mall\Models\Product;
 
 use CrCms\Foundation\App\Models\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class ProductSpecificationModel
+ * Class SpecificationModel
  * @package CrCms\Mall\Models
  */
-class ProductSpecificationModel extends Model
+class SpecificationModel extends Model
 {
     use SoftDeletes;
 
@@ -38,6 +38,6 @@ class ProductSpecificationModel extends Model
      */
     public function belongsToCategory(): BelongsTo
     {
-        return $this->belongsTo(ProductCategoryModel::class);
+        return $this->belongsTo(CategoryModel::class);
     }
 }

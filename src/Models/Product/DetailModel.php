@@ -7,15 +7,15 @@
  * @copyright Copyright &copy; 2018 Rights Reserved CRCMS
  */
 
-namespace CrCms\Mall\Models;
+namespace CrCms\Mall\Models\Product;
 
 use CrCms\Foundation\App\Models\Model;
 
 /**
- * Class ProductDetailModel
+ * Class DetailModel
  * @package CrCms\Mall\Models
  */
-class ProductDetailModel extends Model
+class DetailModel extends Model
 {
     /**
      * @var bool

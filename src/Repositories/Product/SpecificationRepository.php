@@ -9,7 +9,7 @@
 
 namespace CrCms\Mall\Repositories;
 
-use CrCms\Mall\Models\ProductSpecificationModel;
+use CrCms\Mall\Models\Product\SpecificationModel;
 use CrCms\Repository\AbstractMagic;
 use CrCms\Repository\AbstractRepository;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -18,7 +18,7 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
  * Class SpecificationRepository
  * @package CrCms\Mall\Repositories
  */
-class ProductSpecificationRepository extends AbstractRepository
+class SpecificationRepository extends AbstractRepository
 {
     /**
      * @var array
@@ -26,11 +26,11 @@ class ProductSpecificationRepository extends AbstractRepository
     protected $guard = ['name', 'category_id', 'sort', 'status'];
 
     /**
-     * @return ProductSpecificationModel
+     * @return SpecificationModel
      */
-    public function newModel(): ProductSpecificationModel
+    public function newModel(): SpecificationModel
     {
-        return app(ProductSpecificationModel::class);
+        return app(SpecificationModel::class);
     }
 
     /**

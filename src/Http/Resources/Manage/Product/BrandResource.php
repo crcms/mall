@@ -7,16 +7,12 @@
  * @copyright Copyright &copy; 2018 Rights Reserved CRCMS
  */
 
-namespace CrCms\Mall\Http\Resources\Manage;
+namespace CrCms\Mall\Http\Resources\Manage\Product;
 
 use CrCms\Foundation\App\Http\Resources\Resource;
 use CrCms\Mall\Attributes\MallAttribute;
 
-/**
- * Class ProductBrandResource
- * @package CrCms\Mall\Http\Resources\Manage
- */
-class ProductBrandResource extends Resource
+class BrandResource extends Resource
 {
 
     public function toArray($request)

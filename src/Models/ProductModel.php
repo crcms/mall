@@ -10,8 +10,11 @@
 namespace CrCms\Mall\Models;
 
 use CrCms\Foundation\App\Models\Model;
+use CrCms\Mall\Models\Product\BrandModel;
+use CrCms\Mall\Models\Product\CategoryModel;
+use CrCms\Mall\Models\Product\DetailModel;
+use CrCms\Mall\Models\Product\StockModel;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -38,7 +41,7 @@ class ProductModel extends Model
      */
     public function hasOneDetail(): HasOne
     {
-        return $this->hasOne(ProductDetailModel::class, 'id', 'id');
+        return $this->hasOne(DetailModel::class, 'id', 'id');
     }
 
     /**
@@ -46,7 +49,7 @@ class ProductModel extends Model
      */
     public function hasOneBrand(): HasOne
     {
-        return $this->hasOne(ProductBrandModel::class, 'id', 'brand_id');
+        return $this->hasOne(BrandModel::class, 'id', 'brand_id');
     }
 
     /**
@@ -54,7 +57,7 @@ class ProductModel extends Model
      */
     public function hasOneCategory(): HasOne
     {
-        return $this->hasOne(ProductCategoryModel::class, 'id', 'category_id');
+        return $this->hasOne(CategoryModel::class, 'id', 'category_id');
     }
 
     /**
@@ -62,6 +65,6 @@ class ProductModel extends Model
      */
     public function belongsToStocks(): BelongsTo
     {
-        return $this->belongsTo(ProductStockModel::class, 'id', 'product_id');
+        return $this->belongsTo(StockModel::class, 'id', 'product_id');
     }
 }

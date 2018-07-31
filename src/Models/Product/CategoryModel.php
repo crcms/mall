@@ -1,12 +1,12 @@
 <?php
 
-namespace CrCms\Mall\Models;
+namespace CrCms\Mall\Models\Product;
 
 use CrCms\Foundation\App\Models\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Kalnoy\Nestedset\NodeTrait;
 
-class ProductCategoryModel extends Model
+class CategoryModel extends Model
 {
     use SoftDeletes, NodeTrait;
 

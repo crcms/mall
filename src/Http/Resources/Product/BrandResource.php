@@ -7,15 +7,11 @@
  * @copyright Copyright &copy; 2018 Rights Reserved CRCMS
  */
 
-namespace CrCms\Mall\Http\Resources;
+namespace CrCms\Mall\Http\Resources\Product;
 
 use CrCms\Foundation\App\Http\Resources\Resource;
 
-/**
- * Class ProductBrandResource
- * @package CrCms\Mall\Http\Resources
- */
-class ProductBrandResource extends Resource
+class BrandResource extends Resource
 {
     /**
      * @param \Illuminate\Http\Request $request
@@ -30,10 +26,10 @@ class ProductBrandResource extends Resource
     }
 
     /**
-     * @return ProductCategoryResource
+     * @return CategoryResource
      */
-    protected function includeCategory(): ProductCategoryResource
+    protected function includeCategory(): CategoryResource
     {
-        return new ProductCategoryResource($this->belongsToCategory);
+        return new CategoryResource($this->belongsToCategory);
     }
 }

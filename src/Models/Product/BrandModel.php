@@ -7,16 +7,16 @@
  * @copyright Copyright &copy; 2018 Rights Reserved CRCMS
  */
 
-namespace CrCms\Mall\Models;
+namespace CrCms\Mall\Models\Product;
 
 use CrCms\Foundation\App\Models\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * Class ProductBrandModel
+ * Class BrandModel
  * @package CrCms\Mall\Models
  */
-class ProductBrandModel extends Model
+class BrandModel extends Model
 {
     /**
      * @var string
@@ -28,6 +28,6 @@ class ProductBrandModel extends Model
      */
     public function belongsCategory(): BelongsTo
     {
-        return $this->belongsTo(ProductCategoryModel::class, 'category_id', 'id');
+        return $this->belongsTo(CategoryModel::class, 'category_id', 'id');
     }
 }

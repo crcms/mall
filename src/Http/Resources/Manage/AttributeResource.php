@@ -9,8 +9,8 @@
 
 namespace CrCms\Mall\Http\Resources;
 
-use CrCms\Mall\Attributes\CategoryAttribute;
 use CrCms\Foundation\App\Http\Resources\Resource;
+use CrCms\Mall\Attributes\MallAttribute;
 use Illuminate\Support\Arr;
 
 class AttributeResource extends Resource
@@ -22,7 +22,7 @@ class AttributeResource extends Resource
     public function toArray($request): array
     {
         $all = [
-            'status' => CategoryAttribute::getStaticTransform(CategoryAttribute::KEY_STATUS),
+            'status' => MallAttribute::getStaticTransform(MallAttribute::KEY_STATUS),
         ];
 
         return $this->resource ? Arr::only($all, $this->resource) : $all;
